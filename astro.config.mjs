@@ -6,14 +6,19 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: '',
+			logo: {
+				src: './public/OnMicroDocs.png',
+				alt: 'OnMicro.AI Logo',
+			},
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/onmicroai/micro_ai' }],
 			sidebar: [
 				{
 					label: 'Guides',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Cloud Deployment', slug: 'guides/deploy' },
+						{ label: 'Local Deployment', slug: 'guides/deploy_local' },
 					],
 				},
 				{
