@@ -20,6 +20,7 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Cloud Deployment', slug: 'guides/deploy' },
 						{ label: 'Local Deployment', slug: 'guides/deploy_local' },
+						{ label: 'LTI Connection (Open edX®)', slug: 'guides/lti_connection' },
 					],
 				},
 				{
