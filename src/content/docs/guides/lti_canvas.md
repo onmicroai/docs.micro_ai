@@ -19,11 +19,11 @@ Note: The grade is pass/fail based on whether or not the student successfully re
 
 **\# IN CANVAS (administrator)**
 
-1. **Go to your Canvas account admin → Developer Keys.**
+1. **Go to your Canvas account admin → Apps.**
 
-2. **Create a new key → LTI Key.**
+2. **Choose 'Install a New App'.**
 
-3. **Set the configuration method to "Enter URL" and paste the OnMicro.AI configuration URL:**
+3. **Select LTI Version '1.3' and set the install method to "Enter URL" and paste the OnMicro.AI configuration URL:**
 
    ```
    https://onmicro.ai/lti/canvas-config/
@@ -31,18 +31,28 @@ Note: The grade is pass/fail based on whether or not the student successfully re
 
    This URL returns the tool configuration (launch, login, and JWKS endpoints, the grade-passback scopes, and the deep-linking placements). Canvas will fill in the rest of the form for you.
 
-4. **Save the key, then toggle its state to "ON".**
+4. **The app form should be populated with the correct OnMicro.AI URLs and values. Select 'Next' to proceed.**
 
-5. **Note the generated values.** From the key's settings (the "•••" menu → and the key details) record:
+5. **Leave the default permissions. Select 'Next' to proceed.**
+
+6. **For User Data Shared With this App, select 'All User data' to share names and emails with Onmcro.AI**
+
+7. **Leave the default Placements selected. Select 'Next' to proceed.**
+
+8. **Leave the default Override URI values. Select 'Next' to proceed.**
+
+9. **Give your app a nickname (e.g. OnMicro) and select 'Next' to proceed.**
+
+10. **Review your changes and select 'Install App' to complete the connection.**
+
+11. **Choose the Modify Availability button (the pencil icon) and switch the app to 'Available'**
+
+10. **Note the generated values.** From the app's settings record:
 
    | Field | Where to find it |
    | :---- | :---- |
-   | Client ID | The number shown in the "Details" column of the Developer Key |
-   | Deployment ID | Generated after the tool is added to the account/course (see step 7) |
-
-6. **Add the tool to the account (or a course):** go to **Settings → Apps → View App Configurations → + App**, choose **By Client ID**, and enter the Client ID from step 5.
-
-7. **Find the Deployment ID:** after adding the app, open its settings (the gear/"•••" icon next to it) and copy the **Deployment ID**.
+   | Client ID | The 'Copy Client ID' button |
+   | Deployment ID | The Deployment ID is listed on the screen |
 
 **\# IN [ONMICRO.AI](http://ONMICRO.AI) (administrator, via Django admin)**
 
@@ -56,11 +66,11 @@ Tool consumers are configured from the Django admin panel.
 
    | Field | Value |
    | :---- | :---- |
-   | Issuer | `https://canvas.instructure.com` (use `https://sso.canvaslms.com` for hosted Canvas, or your self-hosted issuer) |
+   | Issuer | Your canvas URL with https prefix (e.g. https://mysite.instructure.com) |
    | Client ID | The Developer Key Client ID from Canvas |
-   | Auth Login URL | `https://sso.canvaslms.com/api/lti/authorize_redirect` (or your instance's value) |
-   | Auth Token URL | `https://sso.canvaslms.com/login/oauth2/token` (or your instance's value) |
-   | Keyset URL | `https://sso.canvaslms.com/api/lti/security/jwks` (or your instance's value) |
+   | Auth Login URL | Your instance's value (e.g. https://mysite.instructure.com/**api/lti/authorize_redirect**) |
+   | Auth Token URL | Your instance's value (e.g. https://mysite.instructure.com/**login/oauth2/token**) |
+   | Keyset URL | Your instance's value (e.g. https://mysite.instructure.com/**api/lti/security/jwks**) |
    | Deployment ID | The Deployment ID from Canvas |
 
    Tip: the exact Issuer / Auth / Keyset URLs depend on your Canvas environment. They are shown in Canvas's LTI documentation for your region and match the values your Canvas instance uses.
